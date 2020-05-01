@@ -1,10 +1,15 @@
 #include <Arduino.h>
 #include <HX711.h>
+#include <Wire.h>
+#include "SSD1306Wire.h"
+#include "OLEDDisplayUi.h"
 
 const int LOADCELL_DOUT_PIN = 2;
 const int LOADCELL_SCK_PIN = 3;
 
 HX711 scale;
+SSD1306Wire display(0x3c, SDA, SCL);   
+
 void setup() {
   Serial.begin(115200);
   scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
